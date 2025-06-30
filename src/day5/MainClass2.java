@@ -1,5 +1,7 @@
 package day5;
 
+import java.util.Scanner;
+
 public class MainClass2 {
 	
 	public static void main(String[] args) {
@@ -15,6 +17,8 @@ public class MainClass2 {
 		abdul.lastName = "Memon";
 		abdul.gender= "Male";
 		abdul.age = 30;
+		
+		
 		
 		System.out.println( aman.showInfo());
 		System.out.println( abdul.showInfo());

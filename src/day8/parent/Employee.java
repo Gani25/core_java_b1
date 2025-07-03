@@ -1,11 +1,9 @@
-package day7;
-
-import day7.parent.Person;
+package day8.parent;
 
 public class Employee extends Person {
 
-	protected int salary;
-	protected String department;
+	private double salary;
+	private String department;
 	
 	public Employee() {
 		
@@ -15,7 +13,7 @@ public class Employee extends Person {
 		
 	}
 	
-	public Employee(String name, int age, String gender,int salary,String department) {
+	public Employee(String name, int age, String gender,double salary,String department) {
 		// calling base class parameterized constructor from derived class constructor
 		super(name,gender,age); 
 		System.out.println("Parameterized Constructor of Employee Class");
@@ -24,12 +22,22 @@ public class Employee extends Person {
 		this.department=department;
 	}
 
+	public void deductTax() {
+		if(salary > 25000)
+		{
+			salary = salary - (0.1 * salary);
+			System.out.println("10% Tax Deducted\nUpdated Salary = "+salary);
+		}
+		else {
+			System.out.println("As your salary is below.\nNo Tax Deducted");
+		}
+	}
 	
-	public int getSalary() {
+	public double getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 

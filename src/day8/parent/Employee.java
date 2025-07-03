@@ -2,8 +2,8 @@ package day8.parent;
 
 public class Employee extends Person {
 
-	private double salary;
-	private String department;
+	protected double salary;
+	protected String department;
 	
 	public Employee() {
 		

@@ -4,8 +4,8 @@ import day7.parent.Person;
 
 public class Employee extends Person {
 
-	protected int salary;
-	protected String department;
+	private int salary;
+	private String department;
 	
 	public Employee() {
 		

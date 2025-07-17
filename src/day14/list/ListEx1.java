@@ -1,6 +1,7 @@
 package day14.list;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -43,6 +44,39 @@ public class ListEx1 {
 		System.out.println("My Foods = "+foods);
 		foods.addAll(1,myFavFoods);
 		System.out.println("My Foods = "+foods);
+		
+		System.out.println("First Occurence Index of apple = "+foods.indexOf("Apple"));
+		System.out.println("Last Occurence Index of apple = "+foods.lastIndexOf("Apple"));
+		
+		System.out.println(foods.isEmpty());
+		System.out.println("Element deleted at index 2 = "+foods.remove(2));
+		System.out.println("My Foods = "+foods);
+		System.out.println("Element deleted at index 2 = "+foods.remove("Apple"));
+		System.out.println("My Foods = "+foods);
+		foods.add("Orange");
+		System.out.println("My Foods = "+foods);
+		foods.removeAll(myFavFoods);
+		System.out.println("My Foods = "+foods);
+		
+		System.out.println(foods.set(2, "Watermellon"));
+		System.out.println("My Foods = "+foods);
+		// foods.sort(null);// ASC
+		// DESC
+		foods.sort(Collections.reverseOrder());
+		System.out.println("My Foods After Sorting= "+foods);
+		
+		List<String> reverseFoods = foods.reversed();
+		System.out.println("My Foods After Reversed = "+reverseFoods);
+		
+		System.out.println(foods.indexOf("Shubham"));
+		System.out.println(foods.contains("Shubham"));
+		System.out.println(foods.contains("Apple"));
+		
+		
+		
+		
+		
+
 		
 		
 		

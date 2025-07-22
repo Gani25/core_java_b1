@@ -33,6 +33,7 @@ public class MapEx {
 		});
 		
 		System.out.println(userInfo);
+		userInfo.
 		
 	}
 	

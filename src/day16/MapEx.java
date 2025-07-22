@@ -22,6 +22,18 @@ public class MapEx {
 
 		System.out.println(userInfo.keySet());
 		
+		System.out.println(userInfo.get("root"));
+		
+		userInfo.put("Rohit", "rh123");
+		
+		System.out.println(userInfo);
+		
+		userInfo.compute("Rohit", (k,v) -> {
+			return k+"@"+v;
+		});
+		
+		System.out.println(userInfo);
+		
 	}
 	
 	

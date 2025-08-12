@@ -67,6 +67,66 @@ public class StreamMain {
 		System.out.println("All Products Sorted By Quantity In DESCENDING ORDER: ");
 		products.stream().sorted(Comparator.comparingInt(Product::getQuantity).reversed()).forEach(System.out::println);
 		System.out.println("---------------------------------------------------------");
+		
+		// 5. Top 3 expensive products
+		System.out.println("---------------------------------------------------------");
+		System.out.println();
+		System.out.println("Top 3 Most Expensive Products ");
+		products.stream().filter(p -> p.getQuantity()>0).sorted(Comparator.comparingInt(Product::getPrice).reversed()).limit(3).forEach(System.out::println);
+		System.out.println("---------------------------------------------------------");
+		
+		// 6. Display products and remove first 2 cheapest
+		
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Products Sorted Skip cheapest 2: ");
+		products.stream().sorted(Comparator.comparingInt(p -> p.getPrice())).skip(2).forEach(System.out::println);
+		System.out.println("---------------------------------------------------------");
+		
+		// 7. Display All Categories
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Display All Categories ");
+		products.stream().map(p -> p.getCategory()).distinct().forEach(System.out::println);
+		System.out.println("---------------------------------------------------------");
+		
+		// 8. Find How Many Out Of Stocks -> count of qty == 0
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Products counts where out of stock ");
+		System.out.println(products.stream().filter(p -> p.getQuantity() == 0).count());
+		System.out.println("---------------------------------------------------------");
+		
+		// 9. Find if any product is having price more than 180000
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Products with value(price) more than 180000?");
+		System.out.println(products.stream().anyMatch(p -> p.getPrice()> 180000));
+		System.out.println("---------------------------------------------------------");
+		// 9. Find if any product is having price more than 140000
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Products with value(price) more than 140000?");
+		System.out.println(products.stream().anyMatch(p -> p.getPrice()> 140000));
+		System.out.println("---------------------------------------------------------");
+		
+		// 10. Are all my products values are above or equal to 1000?
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Are all my products values are above or equal to 1000?");
+		System.out.println(products.stream().allMatch(p -> p.getPrice() >= 1000));
+		System.out.println("---------------------------------------------------------");
+		// 11. Is there any product with negative quantity?
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Is there any product with negative quantity?");
+		System.out.println(products.stream().noneMatch(p -> p.getQuantity() < 0));
+		System.out.println("---------------------------------------------------------");
+		
+		// 12. Find cheapest products
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Cheapest Product");
+		products.stream().min(Comparator.comparingInt(p -> p.getPrice())).ifPresent(System.out::println);
+		System.out.println("---------------------------------------------------------");
+		
+		// 13. Most Expensive Product
+		
+		
+		
+		
 	}
 
 }

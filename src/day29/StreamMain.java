@@ -3,6 +3,8 @@ package day29;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import day29.entity.Product;
 
@@ -123,6 +125,62 @@ public class StreamMain {
 		System.out.println("---------------------------------------------------------");
 		
 		// 13. Most Expensive Product
+		
+		// 14. Find Total Valuation Of Products
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Total Product Valuation In Company");
+//		List<Integer> valuation =  products.stream().map(p -> p.getPrice() * p.getQuantity()).toList();
+//		int sum = 0;
+//		for(int amount:valuation) {
+//			sum+=amount;
+//		}
+//		System.out.println(sum);
+		System.out.println(products.stream().map(p -> p.getPrice() * p.getQuantity()).reduce(0,(a,b)->a+b));
+		System.out.println("---------------------------------------------------------");
+		
+		// 15. Combine Products By Categories
+		// Map<cat_name, List of products>
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Product By Categories");
+		Map<String, List<Product>> productByCategories = products.stream().collect(Collectors.groupingBy(p -> p.getCategory()));
+
+		productByCategories.forEach((category, productbyCat)->{
+			System.out.println("Category = "+category);
+			productbyCat.forEach(p -> System.out.println(p));
+		});
+		System.out.println("---------------------------------------------------------");
+		
+		// 16. Total Price by Category
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Total Price By Categories");
+		Map<String, Integer> priceByCategories = products.stream().collect(Collectors.groupingBy(p -> p.getCategory(), Collectors.summingInt(p -> p.getPrice())));
+		
+		System.out.println(priceByCategories);
+		System.out.println("---------------------------------------------------------");
+		
+		// 17. Average price of all products
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Average Price");
+		List<Integer> prices = products.stream().map(p->p.getPrice()).toList();
+		System.out.println(prices);
+		
+		double sum_price = 0;
+		for(int p:prices) {
+			sum_price = sum_price + (double)p;
+		}
+		double avg = sum_price / prices.size();
+		
+		System.out.println(avg);
+		
+		System.out.println(products.stream().mapToInt(p->p.getPrice()).average().getAsDouble());
+		
+		System.out.println("---------------------------------------------------------");
+		
+		
+		// 18. Element which are removed when filter?
+		System.out.println("---------------------------------------------------------");
+		products.stream().filter(p -> p.getCategory().equalsIgnoreCase("Clothing")).peek(p -> System.out.println("Removed Product = "+p)).toList();
+		System.out.println("---------------------------------------------------------");
 		
 		
 		
